@@ -2,7 +2,6 @@ package com.example.medicamentos;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -10,47 +9,53 @@ import java.util.List;
 public class MedicamentosController {
 
     private final List<Medicamento> medicamentos = List.of(
-            Medicamento.createMedicamento(
+            new Medicamento(
                     "paracetamol",
                     List.of("Dolex", "Panadol"),
                     List.of("oral", "rectal", "IV"),
                     "500-1000 mg cada 6-8h (max. 4g/dia",
                     List.of("Fiebre", "Dolor leve a moderado"),
                     List.of("Insuficiencia hepatiza grave"),
-                    List.of("Nauseas", "Hepatoxicidad")
+                    List.of("Nauseas", "Hepatoxicidad"),
+                    List.of("No administrar con alcohol", "Controlar fuccion hepatica si su uso es prolongado")
             ),
 
-            Medicamento.createMedicamento(
+            new Medicamento(
                     "metoclopramida",
                     List.of("Primperan", "Plasil"),
                     List.of("oral", "IM", "IV"),
                     "10 mg cada 6-8h",
                     List.of("Nuseas", "Vomito"),
                     List.of("Hemorragia gastrointestinal", "Epilepsia"),
-                    List.of("Somnolencia", "Diarrea", "Mareos")
+                    List.of("Somnolencia", "Diarrea", "Mareos"),
+                    List.of("Observar signos extrapiramidales", "Evitar uso prolongado")
             ),
 
-            Medicamento.createMedicamento(
+            new Medicamento(
                     "ibuprofeno",
                     List.of("Advil", "Motil"),
                     List.of("oral"),
                     "400-600 mg cada 6-8h (max. 2400 mg/dia",
                     List.of("Fiebre", "Dolor", "Inflamacion"),
                     List.of("Ulcera gastrica", "Insuficiencia renal"),
-                    List.of("Dolor gastrico", "Nauseas")
+                    List.of("Dolor gastrico", "Nauseas"),
+                    List.of("Administrar con alimentos", "Evitar con pascientes con gastritis")
+
             ),
 
-            Medicamento.createMedicamento(
+            new Medicamento(
                     "omeprazol",
                     List.of("Lozec", "Zegerid"),
                     List.of("oral"),
                     "20-40 mg al dia",
                     List.of("Acidez", "Gastritis", "Reflujo"),
                     List.of("Ipersencibilidad al farmaco"),
-                    List.of("Dolor abdominal", "Flatulencia", "Nauceas")
+                    List.of("Dolor abdominal", "Flatulencia", "Nauceas"),
+                    List.of("Administrar en ayunas", "Evaluar eficacia clinica")
+
             ),
 
-            Medicamento.createMedicamento(
+            new Medicamento(
                     "loratudina",
                     List.of("Claritin", "Alerpriv"),
                     List.of("oral"),
@@ -59,7 +64,7 @@ public class MedicamentosController {
                     List.of("Insuficiencia hepatiza grave"),
                     List.of("Somnolencia", "Sequedad bucal"),
                     List.of("Administrar preferiblemente de noche")
-                    );
+                    ),
 
             new Medicamento(
                     "amoxicilina",
@@ -115,15 +120,18 @@ public class MedicamentosController {
                     List.of("Ulcera peptica activa", "Isuficencia renal"),
                     List.of("Nauseas", "Somnolencia", "Dolor gastrico"),
                     List.of("Uso a corto plazo", "Evaluar funcion renal")
+
                     )
-
-            );
-
     );
 
     @GetMapping("/")
     public String prueba(){
-        return  "Hola Fernando";
+      return  "Hola Fernando";
     }
 
+    @GetMapping("/medicamentos")
+    public List<Medicamento> listaDeMedicamentos(){
+        return  medicamentos;
+    }
 }
+
