@@ -11,8 +11,9 @@ public class Medicamento {
     private List<String> indicaciones;
     private List<String> contraindicaciones;
     private List<String> efectosAdversos;
+    private List<String> cuidadosEnfermeria;
 
-    public Medicamento(String nombre, List<String> comercial, List<String> via, String dosis, List<String> indicaciones, List<String> contraindicaciones, List<String> efectosAdversos) {
+    public Medicamento(String nombre, List<String> comercial, List<String> via, String dosis, List<String> indicaciones, List<String> contraindicaciones, List<String> efectosAdversos, List<String> cuidadosEnfermeria) {
         this.nombre = nombre;
         this.comercial = comercial;
         this.via = via;
@@ -20,6 +21,7 @@ public class Medicamento {
         this.indicaciones = indicaciones;
         this.contraindicaciones = contraindicaciones;
         this.efectosAdversos = efectosAdversos;
+        this.cuidadosEnfermeria = cuidadosEnfermeria;
     }
 
     public String getNombre() {
@@ -76,5 +78,13 @@ public class Medicamento {
 
     public void setEfectosAdversos(List<String> efectosAdversos) {
         this.efectosAdversos = efectosAdversos;
+    }
+
+    public List<String> getCuidadosEnfermeria() {
+        return cuidadosEnfermeria;
+    }
+
+    public void setCuidadosEnfermeria(List<String> cuidadosEnfermeria) {
+        this.cuidadosEnfermeria = cuidadosEnfermeria;
     }
 }
