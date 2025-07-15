@@ -1,7 +1,9 @@
 package com.example.medicamentos;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -132,6 +134,17 @@ public class MedicamentosController {
     @GetMapping("/medicamentos")
     public List<Medicamento> listaDeMedicamentos(){
         return  medicamentos;
+    }
+
+    @GetMapping("/sintoma")
+    public List<Medicamento> sintoma(@RequestParam String sintoma){
+        List<Medicamento> medicamentoConSintoma = new ArrayList<>();
+        for (Medicamento medicamento : medicamentos) {
+            if (medicamento.getIndicaciones().contains(sintoma)) {
+                medicamentoConSintoma.add(medicamento);
+            }
+        }
+        return medicamentoConSintoma;
     }
 }
 
